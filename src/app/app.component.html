@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="#">Matila's Osint Project</a>
+  </div>
+</nav>
+
+<div class="container mt-4">
+  <h2>Choisissez une ville :</h2>
+  <select class="form-select" (change)="getCarburantsByVille($event)">
+    <option value="" disabled selected>Choisissez une ville</option>
+    <option *ngFor="let ville of villesDisponibles" [value]="ville">{{ ville }}</option>
+  </select>
+
+  <h2>Liste des prix des carburants</h2>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Code Postal</th>
+        <th>Ville</th>
+        <th>Prix</th>
+        <th>Département</th>
+        <th>Adresse</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let carburant of carburants">
+        <td>{{ carburant.fields.code_region }}</td>
+        <td>{{ carburant.fields.ville }}</td>
+        <td>{{ carburant.fields.prix }}</td>
+        <td>{{ carburant.fields.departement }}</td>
+        <td>{{ carburant.fields.adresse }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
